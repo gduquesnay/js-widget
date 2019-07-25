@@ -9,7 +9,7 @@ export function show(networkHandle) {
   div.innerHTML = html.trim();
   body.appendChild(div);
   if (isMobile()) {
-    addSmsOption(networkHandle.handle); 
+    addSmsOption(networkHandle.smsNumber); 
     // Showing SMS option only on mobile devices
   }
   const widget = document.getElementById('jsWidgetDialog');
