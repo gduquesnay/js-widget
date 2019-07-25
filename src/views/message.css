@@ -1,21 +1,65 @@
-.js-widget-overlay{
-    z-index: 10001; 
-    position: fixed;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    opacity: 0.8;
-    background-color: #000;
-}
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
 .js-widget-dialog{
-    position: fixed;
-    z-index: 10002;
-    background: #fff;
-    left: 50%;
-    top: 30%;
-    margin: 0 0 0 -120px;
-    width: 200px;
-    padding: 10px 20px;
-    border: solid 1px #333
+  position: fixed;
+  font-family: 'Roboto', sans-serif;
+  z-index: 10002;
+  background: black;
+  right: 25px;
+  bottom: 25px;
+  cursor: pointer;
+  margin: 0 0 0 -120px;
+  border-radius: 50%;
+  padding: 20px;
+  box-shadow: black 0 0 5px;
+}
+
+.option-container {
+  position: absolute;
+  bottom: 100%;
+	right: 0;
+	transition: right 300ms ease-out;
+}
+
+.option-container.closed {
+	right: -230px;
+}
+
+.option-container>ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.option {
+  margin-bottom: 25px;
+}
+
+.option h2 {
+  margin: 0;
+}
+
+.option svg {
+  height: 40px;
+	padding-right: 20px;
+}
+
+.option a {
+	padding: 10px 15px;
+  width: 200px;
+  border: 1px solid #000;
+  background-color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  color: #000;
+  text-decoration: none;
+}
+
+.hidden {
+  display: none !important;
 }

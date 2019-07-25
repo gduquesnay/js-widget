@@ -20,7 +20,19 @@ module.exports = (env) => {
             : [new webpack.optimize.UglifyJsPlugin()],
         module: {
             rules: [
-                { test: /\.html$/i, use: 'html-loader' },
+              { test: /\.html$/i, use: 'html-loader' },
+              {
+								test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+								use: [
+									{
+										loader: 'file-loader',
+										options: {
+											name: '[name].[ext]',
+											outputPath: 'fonts/'
+										}
+									}
+								]
+							},
                 { test: /\.css$/i, use: ['style-loader', 'css-loader' + (isDevBuild ? '' : '?minimize')] },
                 {
                     test: /\.js$/i, exclude: /node_modules/, use: {

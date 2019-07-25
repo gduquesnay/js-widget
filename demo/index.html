@@ -1,6 +1,7 @@
 <html>
 <head>
-    <title>Demo page of the widget</title>
+  <title>Demo page of the widget</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
     <h1>Lorem ipsum dolor sit amet augue</h1>
@@ -14,8 +15,13 @@
             js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
             js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
         }(window, document, 'script', 'mw', './widget.js'));
-        mw('init', { someConfiguration: 42 });
-        mw('message', 'Hello world!');
+        mw('init', { configSourceUrl: 'http://pairing.tendigittext.com:4000/api/js_widget_config/D6BMkyTKGCJmB2m66' });
+    </script>
+
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous">
     </script>
 </body>
 </html>
