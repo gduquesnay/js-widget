@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
-.js-widget-dialog{
+#tdcWidgetDialog{
   position: fixed;
   font-family: 'Roboto', sans-serif;
   z-index: 10002;
@@ -14,37 +14,37 @@
   box-shadow: black 0 0 5px;
 }
 
-.option-container {
+#tcdWidgetOptionContainer {
   position: absolute;
   bottom: 100%;
 	right: 0;
 	transition: right 300ms ease-out;
 }
 
-.option-container.closed {
+#tcdWidgetOptionContainer.tdc-widget-closed {
 	right: -230px;
 }
 
-.option-container>ul {
+#tcdWidgetOptionContainer>ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.option {
+.tdc-widget-option {
   margin-bottom: 25px;
 }
 
-.option h2 {
+.tdc-widget-option h2 {
   margin: 0;
 }
 
-.option svg {
+.tdc-widget-option svg {
   height: 40px;
 	padding-right: 20px;
 }
 
-.option a {
+.tdc-widget-option a {
 	padding: 10px 15px;
   width: 200px;
   border: 1px solid #000;
@@ -60,6 +60,70 @@
   text-decoration: none;
 }
 
-.hidden {
+.tdc-widget-hidden {
   display: none !important;
+}
+
+.tdc-widget-sms-form-overlay{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2147483646;
+    font-size: 16px;
+    line-height: 1.2;
+    font-family: 'StrolidLatoLatinWeb';
+    -webkit-font-smoothing: subpixel-antialiased;
+    box-sizing: border-box;
+}
+
+.tdc-widget-sms-form{
+    background: rgba(255, 255, 255, 0.99);
+    box-shadow: 1.6px 1.6px 9.6px 1px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    display: block;
+    top: 10%;
+    left: 35%;
+    right: 35%;
+    padding: 0;
+    overflow: auto;
+    max-height: 640px;
+    max-width: 1000px !important;
+
+}
+
+.tdc-widget-modal-close {
+    float: right;
+    padding: 10px;
+    font-size: 20px;
+    font-family: system-ui;
+    color: grey;
+    cursor: pointer;
+}
+
+.tdc-widget-modal-header {
+    padding: 10px 20px;
+    font-weight: bolder;
+}
+
+.tdc-widget-modal-header h3 {
+    display: inline-block;
+}
+
+.tdc-widget-modal-body {
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.tdc-widget-modal-body .tdc-banner-text {
+    padding: 20px;
+    text-align: center;
+}
+
+.tdc-widget-modal-body a {
+    text-decoration: none;
+    font-size: 35px;
 }

@@ -8,24 +8,37 @@ export function show(networkHandle) {
   const div = document.createElement('div');
   div.innerHTML = html.trim();
   body.appendChild(div);
-  if (isMobile()) {
-    addSmsOption(networkHandle.smsNumber); 
-    // Showing SMS option only on mobile devices
-  }
-  const widget = document.getElementById('jsWidgetDialog');
+  addSmsOption(networkHandle.smsNumber);
+  const widget = document.getElementById('tdcWidgetDialog');
   widget.addEventListener('click', toggle);
   body.addEventListener('click', close);
 }
 
 export function close() {
-	const optionContainer = document.getElementById('optionContainer');
-	optionContainer.classList.add('closed');
+	const tcdWidgetOptionContainer = document.getElementById('tcdWidgetOptionContainer');
+	tcdWidgetOptionContainer.classList.add('tdc-widget-closed');
 }
 
 export function toggle(event) {
   event.stopPropagation();
-	const optionContainer = document.getElementById('optionContainer');
-	optionContainer.classList.toggle('closed');
+	const tcdWidgetOptionContainer = document.getElementById('tcdWidgetOptionContainer');
+	tcdWidgetOptionContainer.classList.toggle('tdc-widget-closed');
+}
+
+export function openModal(event) {
+  event.stopPropagation();
+  const tdcWidgetSMSFormOverlay = document.querySelector('.tdc-widget-sms-form-overlay');
+  tdcWidgetSMSFormOverlay.classList.remove('tdc-widget-hidden');
+}
+
+export function closeModal(event) {
+  event.stopPropagation();
+  const tdcWidgetSMSFormOverlay = document.querySelector('.tdc-widget-sms-form-overlay');
+  tdcWidgetSMSFormOverlay.classList.add('tdc-widget-hidden');
+}
+
+function stopPropagation(event) {
+  event.stopPropagation();
 }
 
 function isMobile() {
@@ -33,7 +46,17 @@ function isMobile() {
 } 
 
 function addSmsOption(handle) {
-  const smsOption =  document.getElementById('smsOption');
-  smsOption.classList.remove('hidden');
-  smsOption.querySelector('#smsLink').href = `sms:${handle}`;
+  const smsOption =  document.getElementById('tdcWidgetSmsOption');
+  smsOption.classList.remove('tdc-widget-hidden');
+  if (isMobile()) {
+    smsOption.querySelector('#tdcWidgetSmsLink').href = `sms:${handle}`;
+  } else {
+    const tdcWidgetSMSFormOverlay = document.querySelector('.tdc-widget-sms-form-overlay');
+    tdcWidgetSMSFormOverlay.querySelector('.tdc-widget-sms-number').href = `sms:${handle}`;
+    tdcWidgetSMSFormOverlay.querySelector('.tdc-widget-sms-number').innerText = handle;
+    tdcWidgetSMSFormOverlay.querySelector('.tdc-widget-modal-close').addEventListener('click', closeModal);
+    tdcWidgetSMSFormOverlay.querySelector('.tdc-widget-sms-form').addEventListener('click', stopPropagation);
+    tdcWidgetSMSFormOverlay.addEventListener('click', closeModal);
+    smsOption.querySelector('#tdcWidgetSmsLink').addEventListener('click', openModal);
+  }
 }
